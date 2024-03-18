@@ -125,10 +125,6 @@ public class Main {
         public static void main(String[] args) {
             CoffeeMachine coffeeMachine = new CoffeeMachine();
             coffeeMachine.powerOn();
-            coffeeMachine.selectCoffee();
-            coffeeMachine.heatingWater();
-            coffeeMachine.grindingBeans();
-            coffeeMachine.startBrewing();
             coffeeMachine.powerOff();
         }
     }
