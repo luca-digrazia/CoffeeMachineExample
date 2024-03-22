@@ -7,7 +7,7 @@ public class Main {
         protected enum State {
             OFF, IDLE, READY, BREWING, HEATING_WATER, GRINDING_BEANS, CLEANING, MAINTENANCE_REQUIRED, ERROR        }
 
-        private State currentState;
+        protected State currentState;
         protected static int numberCoffees = 0;
 
         public State getCurrentState() {
@@ -16,6 +16,10 @@ public class Main {
 
         public static int getNumberCoffees() {
             return numberCoffees;
+        }
+
+        public static void setNumberCoffees(int n) {
+             numberCoffees = n;
         }
 
         public CoffeeMachine() {
@@ -33,10 +37,6 @@ public class Main {
         }
 
         public void powerOff() {
-            if( numberCoffees >= 3) {
-                currentState = State.MAINTENANCE_REQUIRED;
-                performMaintenance();
-            }
 
             currentState = State.OFF;
             System.out.println("Coffee machine powered off.");
@@ -59,27 +59,33 @@ public class Main {
         }
 
         public void startBrewing() {
-            if( numberCoffees >= 3) {
-                currentState = State.MAINTENANCE_REQUIRED;
-                performMaintenance();
-            }
 
-            if (currentState == State.READY) {
-                currentState = State.BREWING;
-                System.out.println("Brewing coffee...");
-                grindingBeans();
-                heatingWater();
+            switch (currentState) {
+                case OFF, ERROR, IDLE, CLEANING,
+                        MAINTENANCE_REQUIRED, HEATING_WATER, GRINDING_BEANS:
+                    System.out.println("Cannot start brewing in current state.");
+                    coffeeMachineError();
+                    break;
 
-                // Simulate brewing process
-                currentState = State.IDLE;
-                System.out.println("Coffee brewed successfully.");
-                numberCoffees += 1;
-            } else {
-                System.out.println("Cannot start brewing in current state.");
-                coffeeMachineError();
+                case READY:
+                    if (numberCoffees >= 3) {
+                        currentState = State.MAINTENANCE_REQUIRED;
+                        performMaintenance();
+                    } else {
+                        currentState = State.BREWING;
+                        System.out.println("Brewing coffee...");
+                        grindingBeans();
+                        heatingWater();
 
+                        // Simulate brewing process
+                        currentState = State.IDLE;
+                        System.out.println("Coffee brewed successfully.");
+                        numberCoffees += 1;
+                    }
+                    break;
             }
         }
+
 
         public void heatingWater() {
             if (currentState == State.BREWING) {
@@ -122,10 +128,5 @@ public class Main {
 
         // Other methods for handling different states and actions
 
-        public static void main(String[] args) {
-            CoffeeMachine coffeeMachine = new CoffeeMachine();
-            coffeeMachine.powerOn();
-            coffeeMachine.powerOff();
-        }
     }
 }
