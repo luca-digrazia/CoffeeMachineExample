@@ -1,10 +1,10 @@
-
+package org.example;
 
 public class Main {
     public static class CoffeeMachine {
 
 
-        protected enum State {
+        public enum State {
             OFF, IDLE, READY, BREWING, HEATING_WATER, GRINDING_BEANS, CLEANING, MAINTENANCE_REQUIRED, ERROR        }
 
         protected State currentState;
@@ -19,7 +19,7 @@ public class Main {
         }
 
         public static void setNumberCoffees(int n) {
-             numberCoffees = n;
+            numberCoffees = n;
         }
 
         public CoffeeMachine() {
@@ -128,5 +128,4 @@ public class Main {
 
         // Other methods for handling different states and actions
 
-    }
-}
+    }}
