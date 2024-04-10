@@ -1,4 +1,4 @@
-name: Java CI
+name: Java CI with Maven
 
 on: [push]
 
@@ -13,10 +13,18 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
 
-      - name: Compile Java Code
-        run: javac Main.java
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-m2
 
-      - name: Run Tests
-        run: java MainTest
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+      - name: Test with Maven
+        run: mvn -B test --file pom.xml
