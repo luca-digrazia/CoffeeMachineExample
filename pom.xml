@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>LATEST</version> <!-- Specifying a specific stable version -->
+            <version>5.8.1</version> <!-- Specifying a specific stable version -->
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -28,7 +28,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>LATEST</version>
+                <version>3.1.2</version>
                 <configuration>
                     <!-- No special configuration needed for JUnit 5 -->
                 </configuration>
