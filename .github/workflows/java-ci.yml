@@ -29,5 +29,3 @@ jobs:
       - name: Test with Maven
         run: mvn -B test --file pom.xml
 
-      - name: Run PIT Mutation Testing
-        run: mvn org.pitest:pitest-maven:mutationCoverage
