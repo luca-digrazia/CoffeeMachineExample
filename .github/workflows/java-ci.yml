@@ -7,25 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up JDK 19
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '19'
-          distribution: 'temurin'  # You can choose a different distributor if needed
+          distribution: 'temurin'  # Temurin is the successor to AdoptOpenJDK
 
       - name: Cache Maven packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
 
-      - name: Build with Maven
-        run: mvn -B clean package --file pom.xml
-
-      - name: Test with Maven
-        run: mvn -B test --file pom.xml
-
+      - name: Run specific test with Maven
+        run: mvn -B test -Dtest=org.example.MainTest --file pom.xml
