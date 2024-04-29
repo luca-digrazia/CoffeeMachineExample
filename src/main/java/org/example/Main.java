@@ -32,7 +32,7 @@ public class Main {
                 performMaintenance();
             }
 
-            currentState = State.READY;
+            currentState = State.IDLE;
             System.out.println("Coffee machine powered on.");
         }
 
