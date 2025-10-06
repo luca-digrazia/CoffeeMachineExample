@@ -38,7 +38,7 @@ public class Main {
 
         public void powerOff() {
 
-            currentState = State.OFF;
+            currentState = State.READY;
             System.out.println("Coffee machine powered off.");
         }
 
