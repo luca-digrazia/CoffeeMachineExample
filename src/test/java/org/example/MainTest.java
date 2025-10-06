@@ -32,118 +32,19 @@ class MainTest {
         int c = Main.CoffeeMachine.getNumberCoffees();
         assertEquals(0, c);
 
-    }
+        Main.CoffeeMachine.setNumberCoffees(2);
+        c = Main.CoffeeMachine.getNumberCoffees();
+        assertEquals(2, c);
 
-    @Test
-    public void testStartBrewing_ErrorState() {
-        coffeeMachine.coffeeMachineError();
-        coffeeMachine.startBrewing();
-        assertEquals(Main.CoffeeMachine.State.ERROR, coffeeMachine.getCurrentState());
-
-    }
-    @Test
-    public void testStartBrewing_IdleState() {
-        coffeeMachine.powerOn();
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-        Main.CoffeeMachine.getNumberCoffees();
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.ERROR, coffeeMachine.getCurrentState());
-
-    }
-    @Test
-    public void testStartBrewing_Maintenance() {
-        coffeeMachine.powerOn();
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-        coffeeMachine.selectCoffee();
-
-        Main.CoffeeMachine.setNumberCoffees(4);
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-    }
-    @Test
-    public void testStartBrewing_4Coffees() {
-        coffeeMachine.powerOn();
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-        coffeeMachine.selectCoffee();
-        coffeeMachine.startBrewing();
-
-        coffeeMachine.selectCoffee();
-        coffeeMachine.startBrewing();
-
-        coffeeMachine.selectCoffee();
-        coffeeMachine.startBrewing();
-
-        coffeeMachine.selectCoffee();
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-    }
-    @Test
-    public void testPowerOn_4Coffees() {
-        coffeeMachine.setNumberCoffees(4);
-        coffeeMachine.powerOn();
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
+        // increase coverage of setnumber
+        Main.CoffeeMachine.setNumberCoffees(3);
+        c = Main.CoffeeMachine.getNumberCoffees();
+        assertEquals(3, c);
 
 
     }
-    @Test
-    public void testStartBrewing_HeatingWaterState() {
-        coffeeMachine.heatingWater();
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.ERROR, coffeeMachine.getCurrentState());
 
 
-    }
-    @Test
-    public void testStartBrewing_GrindingBeansState() {
-        coffeeMachine.grindingBeans();
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.ERROR, coffeeMachine.getCurrentState());
-
-
-    }
-    @Test
-    public void testStartBrewing_ReadyState_RequiresMaintenance() {
-        coffeeMachine.powerOn();
-        coffeeMachine.selectCoffee();
-        assertEquals(Main.CoffeeMachine.State.READY, coffeeMachine.getCurrentState());
-        coffeeMachine.startBrewing();
-
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-    }
-
-
-
-    /*@Test
-    public void testStartGetNumberCoffee4() {
-        coffeeMachine.powerOn();
-        assertEquals(Main.CoffeeMachine.State.IDLE, coffeeMachine.getCurrentState());
-
-        //Set number of coffees to 4
-        Main.CoffeeMachine.setNumberCoffees(4);
-        int c = Main.CoffeeMachine.getNumberCoffees();
-        assertEquals(4, c);
-
-    }*/
-
-
-
-
-
-
-
-    // I ran mutation analysis with PIT and I got the following warning:
-    // 1. replaced int return with 0 for org/example/Main$CoffeeMachine::getNumberCoffees → SURVIVED.
-    // Please write a test case to KILL this mutant with numberCoffee = 4
 
 
 

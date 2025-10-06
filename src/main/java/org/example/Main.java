@@ -128,4 +128,15 @@ public class Main {
 
         // Other methods for handling different states and actions
 
-    }}
+    }
+
+    // Add main
+    public static void main(String[] args) {
+        CoffeeMachine coffeeMachine = new CoffeeMachine();
+
+        coffeeMachine.powerOn();
+
+
+        coffeeMachine.powerOff();
+    }
+}
