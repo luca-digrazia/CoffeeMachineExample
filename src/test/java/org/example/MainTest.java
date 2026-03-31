@@ -40,12 +40,7 @@ class MainTest {
         Main.CoffeeMachine.setNumberCoffees(3);
         c = Main.CoffeeMachine.getNumberCoffees();
         assertEquals(3, c);
-
-
     }
-
-
-
 
 
 }
