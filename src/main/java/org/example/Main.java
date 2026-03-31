@@ -30,6 +30,7 @@ public class Main {
             if( numberCoffees >= 3) {
                 currentState = State.MAINTENANCE_REQUIRED;
                 performMaintenance();
+                return;
             }
 
             currentState = State.IDLE;
@@ -38,7 +39,7 @@ public class Main {
 
         public void powerOff() {
 
-            currentState = State.READY;
+            currentState = State.OFF;
             System.out.println("Coffee machine powered off.");
         }
 
@@ -61,7 +62,7 @@ public class Main {
         public void startBrewing() {
 
             switch (currentState) {
-                case OFF, ERROR, IDLE, CLEANING,
+                case OFF, ERROR, CLEANING,
                         MAINTENANCE_REQUIRED, HEATING_WATER, GRINDING_BEANS:
                     System.out.println("Cannot start brewing in current state.");
                     coffeeMachineError();
@@ -113,7 +114,6 @@ public class Main {
                 currentState = State.CLEANING;
                 System.out.println("Performing maintenance...");
                 // Simulate maintenance process
-                currentState = State.IDLE;
                 System.out.println("Maintenance completed.");
                 numberCoffees = 0;
             } else {
