@@ -72,17 +72,11 @@ Coverage only tells us if a line was *executed*. It doesn't tell us if our test 
 **Mutation Testing** (using a tool called `mutmut`) intentionally "breaks" your code—for example, changing a `>` to a `<`—and then runs your tests. If your tests still pass despite the code being broken, your tests "failed" to catch the bug.
 
 ### How to run it:
-1. **Prepare the configuration**: Ensure there is a file named `setup.cfg` in this folder with these lines:
-   ```ini
-   [mutmut]
-   paths_to_mutate=coffee_machine.py
-   runner=python -m unittest test_coffee_machine.py
-   ```
-2. **Run the mutation cycle**:
+1. **Run the mutation cycle**:
    ```bash
    mutmut run
    ```
-3. **See the summary**:
+2. **See the summary**:
    ```bash
    mutmut results
    ```
