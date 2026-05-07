@@ -23,3 +23,10 @@
 hs_err_pid*
 replay_pid*
 .vscode/settings.json
+
+./mutants/*
+.coverage
+.coverage.*
+.cache
+__pycache__/*
+.DS_Store
