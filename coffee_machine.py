@@ -12,7 +12,7 @@ class CoffeeMachine:
         GRINDING_BEANS = "GRINDING_BEANS"
         CLEANING = "CLEANING"
         MAINTENANCE_REQUIRED = "MAINTENANCE_REQUIRED"
-        ERROR = "ERROR"
+        ERROR = "ERROR
 
     number_coffees = 0
 
