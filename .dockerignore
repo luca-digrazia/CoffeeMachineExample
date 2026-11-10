@@ -1,0 +1,11 @@
+.git
+.github
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
+mutants/
+.mutmut-cache
+.venv/
+venv/
+.DS_Store

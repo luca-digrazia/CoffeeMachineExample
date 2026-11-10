@@ -1,3 +1,15 @@
-coverage
-mutmut
-jinja2
+# Development / testing dependencies for CoffeeMachineExample.
+# The application itself (coffee_machine.py) uses only the standard library.
+# Tested with Python 3.13.
+#
+# Install:            pip install -r requirements.txt
+# Fully reproducible: pip install -r requirements-lock.txt
+
+# Code coverage
+coverage==7.17.2
+
+# Mutation testing (configured in setup.cfg)
+mutmut==3.8.1
+
+# HTML report templating
+jinja2==3.1.6
